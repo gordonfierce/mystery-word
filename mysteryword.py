@@ -65,6 +65,14 @@ def not_incorrect_or_repeat_guess(guessed_string, user_input):
         return True
 
 
+def is_correct_guess(secret_word, current_guess):
+    if current_guess in secret_word:
+        print("You got one!")
+        return "You got one!"
+    else:
+        pass
+
+
 def guess_display(guessed_string, secret_word, max_guesses):
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     guesses_list = []
@@ -133,6 +141,7 @@ if __name__ == '__main__':
         curr_guess = input("Guess a letter: ")
         if not_incorrect_or_repeat_guess(guessed_string, curr_guess):
             guessed_string = guess_appender(guessed_string, curr_guess)
+            is_correct_guess(secret_word, curr_guess)
         win_state = check_win_lose(guessed_string, secret_word, max_guesses)
         if win_state is not None:
             break

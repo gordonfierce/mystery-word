@@ -85,3 +85,7 @@ def test_check_win_lose():
     assert game_eval == "You win!"
     game_eval = mw.check_win_lose("abcef", "toward", 5)
     assert game_eval == None
+
+def test_is_correct_guess():
+    guess_eval = mw.is_correct_guess("bombard","a")
+    assert guess_eval == "You got one!"
