@@ -78,7 +78,7 @@ def guess_display(guessed_string, secret_word, max_guesses):
     guesses_list = []
     guesses_string = ""
     for letter in alphabet:
-        if not letter in guessed_string:
+        if letter not in guessed_string:
             guesses_list.append(letter.upper())
         else:
             pass
@@ -127,6 +127,10 @@ def check_win_lose(guessed_string, secret_word, max_guesses):
         return "You lose!"
     else:
         pass
+
+
+def word_length_selector(min_len):
+    pass
 
 
 if __name__ == '__main__':
