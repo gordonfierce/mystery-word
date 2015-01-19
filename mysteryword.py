@@ -129,13 +129,33 @@ def check_win_lose(guessed_string, secret_word, max_guesses):
         pass
 
 
-def word_length_selector(min_len):
-    pass
+def word_length_selector(*args):
+    all_words = get_list_of_all_possible_words()
+    some_words = [word for word in all_words if not word[0].isupper()]
+    if len(args) == 1:
+        some_words = [word for word in some_words if len(word) > args[0]]
+    else:
+        some_words = [word for word in some_words if len(word) > args[0] \
+            and len(word) < args[1]]
+    the_word = random.choice(some_words)
+    return the_word
+
 
 
 if __name__ == '__main__':
     print("Welcome to Mystery Word!")
-    secret_word = word_getter()
+    print("Select a difficulty: [E]asy (4-6 letters), [M]edium (6-10 " + \
+        "letters), or [H]ard (10+ letters)")
+    difficulty_selection = input("E/M/H >")
+    secret_word = ""
+    if difficulty_selection.upper() == "E":
+        secret_word = word_length_selector(4, 6)
+    elif difficulty_selection.upper() == "M":
+        secret_word = word_length_selector(6, 10)
+    elif difficulty_selection.upper() == "H":
+        secret_word = word_length_selector(10)
+    else:
+        secret_word = word_getter()
     print("Your word is {} letters long!".format(len(secret_word)))
     max_guesses = 8  # set to 8, but use 26 to test
     guessed_string = ""
@@ -143,8 +163,10 @@ if __name__ == '__main__':
         word_display(guessed_string, secret_word)
         guess_display(guessed_string, secret_word, max_guesses)
         curr_guess = input("Guess a letter: ")
+        curr_guess = curr_guess.lower()
         if not_incorrect_or_repeat_guess(guessed_string, curr_guess):
             guessed_string = guess_appender(guessed_string, curr_guess)
+            print(guessed_string)
             is_correct_guess(secret_word, curr_guess)
         win_state = check_win_lose(guessed_string, secret_word, max_guesses)
         if win_state is not None:

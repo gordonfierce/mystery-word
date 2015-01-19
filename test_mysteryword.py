@@ -74,6 +74,8 @@ def test_guess_is_new():
 def test_guess_appender():
     new_guess_string = mw.guess_appender("ax", "o")
     assert new_guess_string == ("axo")
+    new_guess_string = mw.guess_appender("ax", "O")
+    assert new_guess_string == ("axo")
 
 
 def test_not_incorrect_or_repeat_guess():
