@@ -56,14 +56,20 @@ def test_word_display():
 
 def test_guess_display():
     displaystring = mw.guess_display("bomar", "bombard", 8)
-    assert displaystring == "Letters remaining: CDEFGHIJKLNPQSTUVWXYZ " + \
-        "Guesses remaining: 8."
+    assert (
+        displaystring
+        == "Letters remaining: CDEFGHIJKLNPQSTUVWXYZ " + "Guesses remaining: 8."
+    )
     displaystring = mw.guess_display("b", "bombard", 8)
-    assert displaystring == "Letters remaining: ACDEFGHIJKLMNOPQRSTUVWXYZ" + \
-        " Guesses remaining: 8."
+    assert (
+        displaystring
+        == "Letters remaining: ACDEFGHIJKLMNOPQRSTUVWXYZ" + " Guesses remaining: 8."
+    )
     displaystring = mw.guess_display("bomarq", "bombard", 8)
-    assert displaystring == "Letters remaining: CDEFGHIJKLNPSTUVWXYZ" + \
-        " Guesses remaining: 7."
+    assert (
+        displaystring
+        == "Letters remaining: CDEFGHIJKLNPSTUVWXYZ" + " Guesses remaining: 7."
+    )
 
 
 def test_guess_is_new():

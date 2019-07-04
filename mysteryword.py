@@ -26,7 +26,7 @@ def word_display(guessed_string, secret_word):
         if letter in guessed_string:
             display_string += letter.upper()
         else:
-            display_string += ("_")
+            display_string += "_"
     print(display_string)
     return display_string
 
@@ -135,17 +135,19 @@ def word_length_selector(*args):
     if len(args) == 1:
         some_words = [word for word in some_words if len(word) > args[0]]
     else:
-        some_words = [word for word in some_words if len(word) > args[0] \
-            and len(word) < args[1]]
+        some_words = [
+            word for word in some_words if len(word) > args[0] and len(word) < args[1]
+        ]
     the_word = random.choice(some_words)
     return the_word
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     print("Welcome to Mystery Word!")
-    print("Select a difficulty: [E]asy (4-6 letters), [M]edium (6-10 " + \
-        "letters), or [H]ard (10+ letters)")
+    print(
+        "Select a difficulty: [E]asy (4-6 letters), [M]edium (6-10 "
+        + "letters), or [H]ard (10+ letters)"
+    )
     difficulty_selection = input("E/M/H >")
     secret_word = ""
     if difficulty_selection.upper() == "E":
